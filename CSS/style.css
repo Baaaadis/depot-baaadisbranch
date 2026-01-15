@@ -398,6 +398,86 @@ p {
     justify-content: space-between;
   }
 }
+
+.fb-icon { width: 40px; opacity: 0.8; transition: 0.3s; }
+.fb-icon:hover { opacity: 1; transform: scale(1.1); }
+
+
+/* =========================================
+   VERSION ORDINATEUR (CORRECTIF POUR TON HTML)
+   ========================================= */
+@media (min-width: 900px) {
+  
+  .hero-title { font-size: 6rem; }
+
+  /* ON UTILISE L'ORDRE NATUREL DU HTML (pas d'inversion auto) */
+  .row { 
+    flex-direction: row; 
+    align-items: center;
+    justify-content: space-between; 
+  }
+
+  /* 1. LIGNES IMPAIRES (1 et 3 : Qui sommes nous / Partage) */
+  /* Ton HTML est : Image d'abord, Texte ensuite */
+  /* Résultat : Image à Gauche, Texte à Droite */
+  .row:nth-child(odd) {
+    justify-content: flex-start;
+  }
+  
+  .row:nth-child(odd) .img-wrap {
+    width: 65%; 
+  }
+  
+  .row:nth-child(odd) .text-wrap {
+    width: 40%;
+    margin-top: 0;
+    margin-left: -10%; /* Le texte mord sur l'image à GAUCHE */
+    text-align: left;
+    padding: 60px;
+  }
+  .row:nth-child(odd) .text-wrap h2::after { margin: 15px 0 0 0; }
+
+
+  /* 2. LIGNES PAIRES (2 et 4 : Passion / Convivial) */
+  /* Ton HTML est : Texte d'abord, Image ensuite */
+  /* Résultat : Texte à Gauche, Image à Droite (C'EST CE QUE TU VEUX) */
+  .row:nth-child(even) {
+    /* Pas de flex-reverse ici, on garde ton ordre HTML */
+    justify-content: flex-end; 
+  }
+
+  .row:nth-child(even) .img-wrap {
+    width: 65%;
+  }
+
+  .row:nth-child(even) .text-wrap {
+    width: 40%;
+    margin-top: 0;
+    margin-right: -10%; /* Le texte mord sur l'image à DROITE */
+    text-align: right; 
+    padding: 60px;
+  }
+  .row:nth-child(even) .text-wrap h2::after { margin: 15px 0 0 auto; }
+
+  
+  /* PAGE CONTACT */
+  .contact-container .row { display: block; }
+  .contact-container .text-wrap { 
+    width: 60%; 
+    margin: 0 auto; 
+    text-align: center;
+  }
+  .contact-container .text-wrap h2::after { margin: 15px auto; }
+
+  /* CARROUSEL */
+  .carousel-slide { flex: 0 0 25%; } 
+  
+  /* FOOTER */
+  .footer-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
 Voici tes media queries commentées ligne par ligne pour bien comprendre comment ton site s'adapte aux ordinateurs (écrans de plus de 900px).
 
 CSS
