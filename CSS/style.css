@@ -399,45 +399,171 @@ p {
   }
 }
 
+.fb-icon { width: 40px; opacity: 0.8; transition: 0.3s; }
+.fb-icon:hover { opacity: 1; transform: scale(1.1); }
 
-/*VERSION ORDINATEUR/responsive */
-@media (min-width: 768px) {
-  .hero-title { font-size: 6rem; }
+
+/* =========================================
+   VERSION ORDINATEUR (CORRECTIF POUR TON HTML)
+   ========================================= */
+@media (min-width: 900px) {
   
+  .hero-title { font-size: 6rem; }
+
+  /* ON UTILISE L'ORDRE NATUREL DU HTML (pas d'inversion auto) */
   .row { 
     flex-direction: row; 
-    padding: 3%; 
-    gap: 4%;
+    align-items: center;
+    justify-content: space-between; 
+  }
+
+  /* 1. LIGNES IMPAIRES (1 et 3 : Qui sommes nous / Partage) */
+  /* Ton HTML est : Image d'abord, Texte ensuite */
+  /* Résultat : Image à Gauche, Texte à Droite */
+  .row:nth-child(odd) {
+    justify-content: flex-start;
   }
   
-  .img-wrap { flex: 45%; }
-  .text-wrap { flex: 55%; }
+  .row:nth-child(odd) .img-wrap {
+    width: 65%; 
+  }
+  
+  .row:nth-child(odd) .text-wrap {
+    width: 40%;
+    margin-top: 0;
+    margin-left: -10%; /* Le texte mord sur l'image à GAUCHE */
+    text-align: left;
+    padding: 60px;
+  }
+  .row:nth-child(odd) .text-wrap h2::after { margin: 15px 0 0 0; }
 
-  .logo img { height: 15vh; }
 
-h2 { 
-    font-size: 3rem; /* Au lieu de 1.6rem sur la version mobile */
-  }
-  p { 
-    font-size: 1.7rem; /* Au lieu de 1.25rem sur la version mobile*/
-  }
-  .carousel-slide {
-    flex: 0 0 33.33%; /* 100% de la largeur du bloc caroussel divisé en 3 photos */
-  }
- .footer-container {
-    flex-direction: row;/* Aligne les blocs côte à côte */
-    justify-content: space-between; /* Pousse le texte à gauche et le FB à droite */
-    align-items: center;/* centre verticalement le logo et le texte */
-  }
-  .footer-text-group {
-    text-align: left; /* Aligne le texte à gauche sur PC */
+  /* 2. LIGNES PAIRES (2 et 4 : Passion / Convivial) */
+  /* Ton HTML est : Texte d'abord, Image ensuite */
+  /* Résultat : Texte à Gauche, Image à Droite (C'EST CE QUE TU VEUX) */
+  .row:nth-child(even) {
+    /* Pas de flex-reverse ici, on garde ton ordre HTML */
+    justify-content: flex-end; 
   }
 
-  .footer-links {
-    justify-content: flex-start;/*aligne à gauche*/
+  .row:nth-child(even) .img-wrap {
+    width: 65%;
   }
-  .footer p {
-    font-size: 1.2rem; 
+
+  .row:nth-child(even) .text-wrap {
+    width: 40%;
+    margin-top: 0;
+    margin-right: -10%; /* Le texte mord sur l'image à DROITE */
+    text-align: right; 
+    padding: 60px;
+  }
+  .row:nth-child(even) .text-wrap h2::after { margin: 15px 0 0 auto; }
+
+  
+  /* PAGE CONTACT */
+  .contact-container .row { display: block; }
+  .contact-container .text-wrap { 
+    width: 60%; 
+    margin: 0 auto; 
+    text-align: center;
+  }
+  .contact-container .text-wrap h2::after { margin: 15px auto; }
+
+  /* CARROUSEL */
+  .carousel-slide { flex: 0 0 25%; } 
+  
+  /* FOOTER */
+  .footer-container {
+    flex-direction: row;
+    justify-content: space-between;
   }
 }
+Voici tes media queries commentées ligne par ligne pour bien comprendre comment ton site s'adapte aux ordinateurs (écrans de plus de 900px).
 
+CSS
+
+/* =========================================
+   VERSION ORDINATEUR (S'active au-dessus de 900px)
+   ========================================= */
+@media (min-width: 900px) {
+  
+  /* Agrandit le titre principal sur grand écran */
+  .hero-title { font-size: 6rem; }
+
+  /* Change l'empilement vertical en ligne horizontale pour l'image et le texte */
+  .row { 
+    flex-direction: row; 
+    align-items: center;
+    justify-content: space-between; 
+  }
+
+  /* --- 1. LIGNES IMPAIRES (Bloc 1 et 3) --- */
+  /* Aligne le contenu au début du flex (gauche) */
+  .row:nth-child(odd) {
+    justify-content: flex-start;
+  }
+  
+  /* L'image prend 65% de la largeur à gauche */
+  .row:nth-child(odd) .img-wrap {
+    width: 65%; 
+  }
+  
+  /* Le bloc texte prend 40% et vient mordre sur l'image à gauche */
+  .row:nth-child(odd) .text-wrap {
+    width: 40%;
+    margin-top: 0; /* Supprime le décalage mobile */
+    margin-left: -10%; /* Effet de chevauchement sur l'image */
+    text-align: left; /* Aligne le texte à gauche */
+    padding: 60px;
+  }
+
+  /* Aligne la petite barre rouge du titre à gauche */
+  .row:nth-child(odd) .text-wrap h2::after { margin: 15px 0 0 0; }
+
+
+  /* --- 2. LIGNES PAIRES (Bloc 2 et 4) --- */
+  /* Aligne le contenu à la fin du flex (droite) */
+  .row:nth-child(even) {
+    justify-content: flex-end; 
+  }
+
+  /* L'image prend 65% de la largeur à droite */
+  .row:nth-child(even) .img-wrap {
+    width: 65%;
+  }
+
+  /* Le bloc texte prend 40% et vient mordre sur l'image à droite */
+  .row:nth-child(even) .text-wrap {
+    width: 40%;
+    margin-top: 0;
+    margin-right: -10%; /* Effet de chevauchement sur l'image */
+    text-align: right; /* Aligne le texte à droite */
+    padding: 60px;
+  }
+
+  /* Aligne la petite barre rouge du titre à droite */
+  .row:nth-child(even) .text-wrap h2::after { margin: 15px 0 0 auto; }
+
+  
+  /* --- PAGE CONTACT --- */
+  /* Annule le flex pour que le formulaire reste centré */
+  .contact-container .row { display: block; }
+  .contact-container .text-wrap { 
+    width: 60%; 
+    margin: 0 auto; 
+    text-align: center;
+  }
+  /* Centre la barre décorative du titre contact */
+  .contact-container .text-wrap h2::after { margin: 15px auto; }
+
+  /* --- CARROUSEL --- */
+  /* Affiche 4 images par ligne sur PC (100% / 4 = 25%) */
+  .carousel-slide { flex: 0 0 25%; } 
+  
+  /* --- FOOTER --- */
+  /* Aligne les éléments du footer horizontalement */
+  .footer-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
