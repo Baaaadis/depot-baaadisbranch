@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Belles Occasions | Les Mécaniques Anciennes</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400;1,500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="CSS/style.css">
+
+  <style>
+    /* Surcharge pour le header Ventes */
+    .header {
+        background: url('images/fondventes.jpg') no-repeat center center / cover !important;
+    }
+
+    /* Styles spécifiques aux annonces */
+    .price-tag {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        font-size: 1.5rem;
+        color: #fff;
+        display: block;
+        margin: 15px 0;
+    }
+
+    .specs {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        opacity: 0.8;
+    }
+
+    .specs li {
+        margin-bottom: 8px;
+        border-bottom: 1px solid rgba(244, 227, 178, 0.2);
+        padding-bottom: 5px;
+    }
+
+    .btn-view {
+        display: inline-block;
+        padding: 12px 25px;
+        border: 1px solid var(--beige);
+        color: var(--beige);
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+        transition: 0.4s;
+    }
+
+    .btn-view:hover {
+        background: var(--beige);
+        color: var(--rouge);
+    }
+
+    .badge-vendu {
+        background: var(--vert);
+        color: var(--beige);
+        padding: 5px 15px;
+        font-size: 0.7rem;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 5;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="noise-overlay"></div>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="Logo" width="75" height="75">
+        <span class="logo-text">LA PASSION <span class="highlight">AUTOMOBILE</span></span>
+      </a>
+      
+      <div class="menu-wrap">
+        <input type="checkbox" id="menu-toggle" hidden>
+        <label for="menu-toggle" class="burger" aria-label="Menu">
+            <span class="line top"></span>
+            <span class="line bottom"></span>
+        </label>
+        
+        <div class="menu-overlay">
+          <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="manifestations.html">Manifestations</a></li>
+            <li><a href="ventes.html">Ventes</a></li>
+            <li class="mobile-only"><a href="contact.html" class="btn-menu-member">Devenir Membre</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <header class="header">
+    <div class="header-overlay"></div>
+    <div class="hero-content">
+      <p class="pre-title">Annonces de collection</p>
+      <h1 class="hero-title">
+        <span class="line">Belles</span>
+        <span class="line indent">Occasions</span>
+      </h1>
+      <div class="scroll-down">
+        <span>Consulter la liste</span>
+        <div class="vertical-line"></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    
+    <article class="row reveal style-3">
+      <div class="img-frame">
+        <img src="images/auto1.jpg" alt="Jaguar Type E">
+      </div>
+      <div class="text-content">
+        <span class="chapter">1964</span>
+        <h2>Jaguar <br><i>Type E S1</i></h2>
+        <span class="price-tag">85 000 €</span>
+        <ul class="specs">
+          <li>Moteur : 3.8L 6 cylindres</li>
+          <li>Kilométrage : 72 000 km</li>
+          <li>État : Concours</li>
+        </ul>
+        <p>Une icône absolue de l'automobile britannique, entretenue avec passion au sein de notre club.</p>
+        <a href="#" class="btn-view">Détails de l'annonce</a>
+      </div>
+    </article>
+    
+    <article class="row reveal style-4">
+      <div class="img-frame">
+        <div class="badge-vendu">VENDU</div>
+        <img src="images/auto2.jpg" alt="Citroën DS">
+      </div>
+      <div class="text-content">
+        <span class="chapter">1972</span>
+        <h2>Citroën <br><i>DS 21 Pallas</i></h2>
+        <span class="price-tag">32 500 €</span>
+        <ul class="specs">
+          <li>Finition : Pallas Origine</li>
+          <li>Boîte : Hydraulique</li>
+          <li>Intérieur : Cuir Tabac</li>
+        </ul>
+        <p>Un confort inégalé et une silhouette révolutionnaire. Ce modèle a trouvé son nouveau gardien.</p>
+        <a href="#" class="btn-view" style="opacity: 0.5; pointer-events: none;">Vendu</a>
+      </div>
+    </article>
+
+    <section class="row reveal style-1" style="margin-top: 100px;">
+        <div class="img-frame" style="height: 300px;">
+            <img src="images/garage.jpg" alt="Vendre votre auto">
+        </div>
+        <div class="text-content" style="background-color: var(--vert);">
+            <h2>Vendre votre <br><i>Véhicule</i></h2>
+            <p>Vous souhaitez confier la vente de votre ancienne à des passionnés ? Nous accompagnons nos membres dans la mise en valeur de leurs pépites.</p>
+            <a href="contact.html" class="btn-view">Nous contacter</a>
+        </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <h4>Mécaniques Anciennes</h4>
+      </div>
+      <div class="footer-links">
+        <a href="contact.html">Déposer une annonce</a>
+        <a href="mentions.html">Conditions de vente</a>
+        <a href="https://www.facebook.com/" target="_blank" class="fb-link">Facebook</a>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2026 Tous droits réservés.
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
